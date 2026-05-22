@@ -4,7 +4,7 @@ fn main() {
     while  x < 32767{
         
         if x < 32767 {
-            println!("Current: {}. Increment by:", x);
+            println!("Current: {}. Increment by: ", x);
         }
         let mut increment = String::new();
         std::io::stdin().read_line(&mut increment).expect("Failed to read line");
@@ -13,7 +13,8 @@ fn main() {
             println!("The given value is lower than 0.");
             continue;
         }else if increment == 0 {
-            break;
+            println!("The given value is 0. Ending the program.");
+            return;
         }
         x += increment;
         
