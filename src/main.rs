@@ -8,17 +8,27 @@ fn main() {
         }
         let mut increment = String::new();
         std::io::stdin().read_line(&mut increment).expect("Failed to read line");
-        let increment: i32 = increment.trim().parse().expect("Please type a number!");
-        if increment < 0 {
+        let hello_world: i16 = match increment.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Parsing failed. Was the number too long for a 16-bit variable?");
+                continue;
+            }
+        };
+        if hello_world < 0 {
             println!("The given value is lower than 0.");
             continue;
-        }else if increment == 0 {
+        }else if hello_world == 0 {
             println!("The given value is 0. Ending the program.");
-            return;
+            break
         }
-        x += increment;
+       
+        x += hello_world as i32;
+         if x > 32767 {
+            println!("Enough incrementations.");
+        }
         
         
     } 
-    println!("Enough incrementations.");
+    
 }
